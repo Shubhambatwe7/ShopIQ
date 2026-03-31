@@ -53,7 +53,7 @@ Ensure the following are installed:
 ###  Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/shopiq.git
+git clone https://github.com/Shubhambatwe7/shopiq.git
 cd shopiq
 ```
 
