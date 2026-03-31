@@ -1,101 +1,253 @@
-# 🛒 ShopIQ – Dynamic E-Commerce Platform
+#  ShopIQ – Intelligent Dynamic Pricing E-Commerce Platform
 
-ShopIQ is an intelligent e-commerce platform that dynamically adjusts product prices based on real-time demand, user behavior, and market trends. The goal is to provide fair pricing for customers while optimizing revenue for sellers.
+## Overview
 
----
-
-## Features
-
--  User Authentication (Login/Register)
--  Product Management System
--  Review & Rating System
--  Cart & Wishlist Functionality
--  Dynamic Pricing Engine (based on demand & reviews)
--  Real-time price updates
--  Responsive UI (Desktop & Mobile)
+ShopIQ is a dynamic e-commerce platform that automatically adjusts product prices based on real-time demand, user behavior, and customer feedback. The system enhances customer experience while optimizing pricing strategies for sellers.
 
 ---
 
-## Tech Stack
+## Objectives
 
-**Frontend:**
-- HTML
-- CSS
-
-**Backend:**
-- Node.js (Express.js)
-- PHP
-
-**Database:**
-- MySQL
+* Implement real-time dynamic pricing
+* Improve customer engagement and transparency
+* Optimize sales and inventory management
+* Build a scalable and responsive e-commerce platform
 
 ---
 
-##  Setup Instructions
+##  System Architecture
 
-Follow these steps to set up and run the project locally.
+ShopIQ follows a **3-tier architecture**:
+
+### 1. Frontend Layer
+
+* Built using HTML and CSS
+* Provides interface for browsing, purchasing, and reviewing products
+
+### 2. Backend Layer
+
+* Node.js (Express.js) + PHP
+* Handles APIs, authentication, and pricing logic
+
+### 3. Database Layer
+
+* MySQL
+* Stores users, products, reviews, and pricing data
 
 ---
 
-### Prerequisites
+## Installation & Setup Guide
 
-Make sure you have installed:
+###  Prerequisites
 
-- Node.js (v16+)
-- PHP (v7+)
-- MySQL
-- Git
-- A code editor (VS Code recommended)
+Ensure the following are installed:
+
+* Node.js (v16 or higher)
+* PHP (v7 or higher)
+* MySQL Server
+* Git
+* VS Code (recommended)
 
 ---
-##  Working of ShopIQ
 
-###  Step-by-Step Workflow
-
-1. **User Interaction**
-   - Users register/login and browse products.
-   - They can view details, add items to cart, and leave reviews/ratings.
-
-2. **Data Collection**
-   - The system continuously tracks:
-     - Product views
-     - Purchase frequency
-     - User ratings and reviews
-     - Cart additions
-
-3. **Dynamic Pricing Engine**
-   - A pricing algorithm processes collected data.
-   - Price updates are based on:
-     -  High demand → Price increases  
-     -  Low demand → Price decreases  
-     -  Better ratings → Price may increase  
-     -  Poor feedback → Price may drop  
-
-4. **Backend Processing**
-   - The backend (Node.js + PHP) handles:
-     - API requests
-     - Business logic
-     - Communication with the database
-
-5. **Database Management**
-   - MySQL stores:
-     - User data
-     - Product details
-     - Reviews and ratings
-     - Pricing history
-
-6. **Real-Time Updates**
-   - Updated prices are fetched and displayed on the frontend.
-   - Users always see the latest price without manual refresh (if implemented with live updates).
-
-7. **User Experience**
-   - Smooth UI allows users to:
-     - Shop efficiently
-     - Compare dynamic prices
-     - Make informed decisions
-
-### Clone the Repository
+###  Step 1: Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/shopiq.git
 cd shopiq
+```
+
+---
+
+###  Step 2: Database Setup
+
+1. Start MySQL server
+2. Create database:
+
+```sql
+CREATE DATABASE shopiq;
+USE shopiq;
+```
+
+3. Import schema:
+
+```bash
+mysql -u root -p shopiq < database/schema.sql
+```
+
+---
+
+### 🔌 Step 3: Backend Setup
+
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file:
+
+```env
+PORT=5000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=shopiq
+```
+
+Start backend server:
+
+```bash
+npm start
+```
+
+---
+
+###  Step 4: PHP Server (if applicable)
+
+```bash
+cd backend/php
+php -S localhost:8000
+```
+
+---
+
+###  Step 5: Run Frontend
+
+* Open `frontend/index.html`
+  OR
+* Use VS Code Live Server
+
+---
+
+### Step 6: Access Application
+
+| Service     | URL                                 |
+| ----------- | ----------------------------------- |
+| Frontend    | http://localhost:3000 or index.html |
+| Backend API | http://localhost:5000               |
+| PHP Server  | http://localhost:8000               |
+
+---
+
+##  Working of the Project
+
+ShopIQ operates using a **data-driven dynamic pricing mechanism** that continuously adapts product prices based on user activity and demand patterns.
+
+###  Detailed Workflow
+
+#### 1. User Interaction Layer
+
+* Users register/login into the platform
+* Browse products, view details, and add items to cart
+* Submit ratings and reviews
+
+#### 2. Data Collection Layer
+
+The system continuously captures user activity such as:
+
+* Product views
+* Search frequency
+* Cart additions
+* Purchase history
+* Ratings and reviews
+
+This data acts as the foundation for price decision-making.
+
+#### 3. Dynamic Pricing Engine (Core Module)
+
+* The pricing algorithm analyzes collected data in real-time
+* It evaluates demand trends and user sentiment
+
+Price adjustment logic:
+
+*  High demand → Price increases
+*  Low demand → Price decreases
+*  Positive reviews → Price may increase
+*  Negative reviews → Price may decrease
+
+This ensures "optimal and competitive pricing" at all times.
+
+#### 4. Backend Processing
+
+* Node.js and PHP handle business logic
+* APIs process requests from frontend
+* Pricing algorithm is executed on the server side
+
+#### 5. Database Operations
+
+* MySQL stores:
+
+  * User data
+  * Product details
+  * Reviews
+  * Updated pricing
+* Historical pricing data is maintained for analysis
+
+#### 6. Real-Time Price Update
+
+* Updated prices are sent back to the frontend
+* Users see the latest price dynamically
+* Ensures transparency and responsiveness
+
+#### 7. Decision & Feedback Loop
+
+* Users make purchase decisions based on updated prices
+* Their behavior again feeds into the system
+* This creates a **continuous feedback loop** improving pricing accuracy over time
+
+---
+
+##  Key Features
+
+* Dynamic pricing algorithm
+* Real-time demand tracking
+* User authentication system
+* Review and rating system
+* Responsive UI
+
+---
+
+##  Testing
+
+* **Unit Testing:** Pricing algorithm validation
+* **Integration Testing:** API and database communication
+* **Manual Testing:** User interface and workflows
+
+---
+
+##  Troubleshooting
+
+| Issue                     | Solution                 |
+| ------------------------- | ------------------------ |
+| Database connection error | Check `.env` credentials |
+| Server not starting       | Run `npm install`        |
+| Port already in use       | Change PORT              |
+| PHP server error          | Verify PHP installation  |
+
+---
+
+##  Scalability & Performance
+
+* Supports up to **10,000 concurrent users**
+* Modular backend architecture
+* Optimized database queries
+
+---
+
+## Future Enhancements
+
+* AI-based demand prediction
+* Personalized pricing
+* Payment gateway integration
+* Admin analytics dashboard
+
+
+##  License
+
+This project is developed for academic purposes.
+
+---
+
+##  Conclusion
+
+ShopIQ showcases how real-time data and intelligent algorithms can transform traditional e-commerce systems into adaptive, efficient, and user-centric platforms.
